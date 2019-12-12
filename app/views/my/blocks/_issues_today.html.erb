@@ -1,0 +1,13 @@
+<%=
+  current_user_ids = [User.current.id] + User.current.group_ids
+
+  query = IssueQuery.new(:name => l("issues_today"), :user => User.current)
+  query.add_filter "assigned_to_id", "=", current_user_ids
+  query.add_filter "status_id", "o"
+  query.add_filter "due_date", "t"
+  query.column_names = settings[:columns].presence || ["project", "tracker", "status", "subject"]
+  query.sort_criteria = settings[:sort].presence || [["due_date", "desc"]]
+  issues = query.issues()
+
+  render :partial => "my/my_block_issues", :locals => {:query => query, :issues => issues, :block => block}
+%>
