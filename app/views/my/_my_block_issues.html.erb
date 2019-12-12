@@ -22,7 +22,7 @@
 </div>
 
 <% if issues.any? %>
-  <%= render :partial => 'issues/list',
+  <%= render :partial => 'issues/list_without_head',
              :locals => {
                :issues => issues,
                :query => query,
