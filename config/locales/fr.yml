@@ -1,5 +1,11 @@
 fr:
+  my_issues_due: "Mes demandes en retard"
+  my_issues_today : "Mes demandes pour aujourd'hui"
+  my_issues_next : "Mes demandes pour plus tard"
   issues_due: "En retard"
-  issues_today : "Aujourd'hui"
+  issues_today : "Pour aujourd'hui"
   issues_next : "A partir de demain"
+  my_issues_opened_closed_today : "Mes demandes ouvertes fermées aujourd'hui"
+  my_issues_synthese : "Synthèse de mes demandes"
  
+

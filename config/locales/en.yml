@@ -1,5 +1,11 @@
 en:
-  issues_due: "Due issues"
-  issues_today : "Today"
-  issues_next : "Next issues"
+  my_issues_due: "My due issues"
+  my_issues_today : "My issues for today"
+  my_issues_next : "My next issues"
+  issues_due: "Due Issues"
+  issues_today : "Today Issues"
+  issues_next : "Next Issues"
+  my_issues_opened_closed_today : "My opened and closed issues today"
+  my_issues_synthese : "Summary of my issues"
+ 
   
