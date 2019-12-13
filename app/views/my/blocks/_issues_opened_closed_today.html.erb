@@ -1,0 +1,22 @@
+<%=
+  current_user_ids = [User.current.id] + User.current.group_ids
+
+  queryopened = IssueQuery.new(:name => l("issues_opened"), :user => User.current)
+  queryopened.add_filter "assigned_to_id", "=", current_user_ids
+  queryopened.add_filter "status_id", "*"
+  queryopened.add_filter "created_on", "t"
+  queryopened.column_names = settings[:columns].presence || ["project", "tracker", "status", "subject"]
+  queryopened.sort_criteria = settings[:sort].presence || [["due_date", "desc"]]
+  issuesopened = queryopened.issues()
+
+  queryclosed = IssueQuery.new(:name => l("issues_closed"), :user => User.current)
+  queryclosed.add_filter "assigned_to_id", "=", current_user_ids
+  queryclosed.add_filter "status_id", "c"
+  queryclosed.add_filter "closed_on", "t"
+  queryclosed.column_names = settings[:columns].presence || ["project", "tracker", "status", "subject"]
+  queryclosed.sort_criteria = settings[:sort].presence || [["due_date", "desc"]]
+  issuesclosed = queryclosed.issues()
+
+
+  render :partial => "my/my_block_issues_opened_closed", :locals => {:queryopened => queryopened, :issuesopened => issuesopened, :queryclosed => queryclosed, :issuesclosed => issuesclosed, :block => block}
+%>
