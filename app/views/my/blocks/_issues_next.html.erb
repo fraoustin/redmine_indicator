@@ -9,5 +9,13 @@
   query.sort_criteria = settings[:sort].presence || [["due_date", "desc"]]
   issues = query.issues()
 
+  queryw = IssueQuery.new(:name => l("issues_next_without_due"), :user => User.current)
+  queryw.add_filter "assigned_to_id", "=", current_user_ids
+  queryw.add_filter "status_id", "o"
+  queryw.add_filter "due_date", "!*"
+  queryw.column_names = settings[:columns].presence || ["project", "tracker", "status", "subject"]
+  queryw.sort_criteria = settings[:sort].presence || [["due_date", "desc"]]
+  issues = issues + queryw.issues()
+
   render :partial => "my/my_block_issues", :locals => {:query => query, :issues => issues, :block => block}
 %>
