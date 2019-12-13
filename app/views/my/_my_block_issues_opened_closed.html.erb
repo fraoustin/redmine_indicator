@@ -1,7 +1,7 @@
 <table class="indicator synthese">
   <tr>
-    <td><div class="circle due"><h1><%= issuesopened.length %></h1></div></td>
-    <td><div class="circle today"><h1><%= issuesclosed.length %></h1></div></td>
+    <td><div class="circle due"><h1><%= link_to issuesopened.length, _project_issues_path(queryopened.project, queryopened.as_params) %></h1></div></td>
+    <td><div class="circle today"><h1><%= link_to issuesclosed.length, _project_issues_path(queryclosed.project, queryclosed.as_params) %></h1></div></td>
   </tr>
   <tr>
     <td><%= l(:label_open_issues_plural) %></td>

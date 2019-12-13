@@ -1,8 +1,8 @@
 <table class="indicator synthese">
   <tr>
-    <td><div class="circle due"><h1><%= issuesdue.length %></h1></div></td>
-    <td><div class="circle today"><h1><%= issuestoday.length %></h1></div></td>
-    <td><div class="circle next"><h1><%= issuesnext.length %></h1></div></td>
+    <td><div class="circle due"><h1><%= link_to issuesdue.length, _project_issues_path(querydue.project, querydue.as_params) %></h1></div></td>
+    <td><div class="circle today"><h1><%= link_to issuestoday.length, _project_issues_path(querytoday.project, querytoday.as_params) %></h1></div></td>
+    <td><div class="circle next"><h1><%= link_to issuesnext.length, _project_issues_path(querynext.project, querynext.as_params) %></h1></div></td>
   </tr>
   <tr>
     <td><%= l(:issues_due) %></td>
