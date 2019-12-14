@@ -24,12 +24,32 @@ table.indicator.synthese .circle h1 {
     border-color: #ef5350;
 }
 
+.circle.due h1 a {
+    color: #ef5350;
+}
+
 .circle.today {
     border-color: #66bb6a;
 }
 
+.circle.today h1 a {
+    color: #66bb6a;
+}
+
 .circle.next {
     border-color: #42a5f5;
+}
+
+.circle.next h1 a {
+    color: #42a5f5;
+}
+
+.circle.nothing {
+    border-color: #BDBDBD;
+}
+
+.circle.nothing h1 a {
+    color: #BDBDBD;
 }
 
 @media screen and (max-width: 899px)
