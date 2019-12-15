@@ -52,6 +52,11 @@ table.indicator.synthese .circle h1 {
     color: #BDBDBD;
 }
 
+canvas.doughnut {
+    max-width: 400px;
+    max-height: 400px;
+}
+
 @media screen and (max-width: 899px)
 {
     table.indicator.synthese .circle {
