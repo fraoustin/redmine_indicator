@@ -1,0 +1,25 @@
+<%=
+  current_user_ids = [User.current.id] + User.current.group_ids
+
+  query = IssueQuery.new(:name => l("my_issues_by_tracker"), :user => User.current)
+  query.add_filter "assigned_to_id", "=", current_user_ids
+  query.add_filter "status_id", "o"
+  query.column_names = settings[:columns].presence || ["tracker", "project", "status", "priority", "subject"]
+  query.sort_criteria = settings[:sort].presence || [["tracker", "due_date", "desc"]]
+  query.group_by = ["status"]
+  issues = query.issues()
+
+  trackers = {}
+  issues.each do |issue|
+    trackers[issue.tracker.name] = (trackers[issue.tracker.name] || []).push(issue)
+  end
+
+  label = []
+  data = []
+  trackers.keys.each do |tracker|
+    label.push(tracker)
+    data.push(trackers[tracker].length)
+  end
+
+  render :partial => "my/my_block_doughnut", :locals => {:id => 'bytracker', :query => query, :block => block, :labels => label, :datas => data}
+%>
