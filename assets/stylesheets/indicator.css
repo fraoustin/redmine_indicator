@@ -18,7 +18,7 @@ table.indicator.summary .circle {
 
 table.indicator.summary .circle h1 {
     padding: 0px;
-    font-style: unset; 
+    font-style: initial; 
 }
 
 .circle.due {

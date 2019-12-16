@@ -1,14 +1,23 @@
 <%=
     if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
         if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'summary' }
-            render :partial => "projects/blocks/issues_summary", :locals => {}
+            render :partial => "projects/blocks/issues_summary", :locals => {:project => project}
         end
     end
 %>
 <%=
     if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
         if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'opened_closed_today' }
-            render :partial => "projects/blocks/issues_opened_closed_today", :locals => {}
+            render :partial => "projects/blocks/issues_opened_closed_today", :locals => {:project => project}
         end
     end
 %>
+<%=
+    if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
+        if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'opened_closed' }
+            render :partial => "projects/blocks/issues_opened_closed", :locals => {:project => project}
+        end
+    end
+%>
+
+
