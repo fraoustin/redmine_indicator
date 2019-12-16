@@ -6,7 +6,7 @@ fr:
   issues_today : "Pour aujourd'hui"
   issues_next : "A partir de demain"
   my_issues_opened_closed_today : "Mes demandes ouvertes fermées aujourd'hui"
-  my_issues_synthese : "Synthèse de mes demandes"
+  my_issues_summary : "Synthèse de mes demandes"
   my_issues_by_priority : "Mes demandes par priorité"
   my_issues_by_status : "Mes demandes par status"
   my_issues_by_tracker : "Mes demandes par tracker"

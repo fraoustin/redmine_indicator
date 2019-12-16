@@ -6,7 +6,7 @@ en:
   issues_today : "Today Issues"
   issues_next : "Next Issues"
   my_issues_opened_closed_today : "My opened and closed issues today"
-  my_issues_synthese : "Summary of my issues"
+  my_issues_summary : "Summary of my issues"
   my_issues_by_priority : "My issues by priority"
   my_issues_by_status : "My issues by status"
   my_issues_by_tracker : "My issues by tracker"

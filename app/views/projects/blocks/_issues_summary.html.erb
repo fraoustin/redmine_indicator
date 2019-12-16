@@ -1,0 +1,31 @@
+<%=
+  querynext = IssueQuery.new(:name => l("issues_next"), :user => User.current)
+  querynext.add_filter "status_id", "o"
+  querynext.add_filter "due_date", "><", [(Date.today+1).strftime("%Y-%m-%d"), (Date.today+7).strftime("%Y-%m-%d")]
+  querynext.column_names = ["project", "tracker", "status", "subject"]
+  querynext.sort_criteria = [["due_date", "desc"]]
+  issuesnext = querynext.issues()
+
+  queryw = IssueQuery.new(:name => l("issues_next_without_due"), :user => User.current)
+  queryw.add_filter "status_id", "o"
+  queryw.add_filter "due_date", "!*"
+  queryw.column_names = ["project", "tracker", "status", "subject"]
+  queryw.sort_criteria = [["due_date", "desc"]]
+  issuesnext = issuesnext + queryw.issues()
+
+  querydue = IssueQuery.new(:name => l("issues_due"), :user => User.current)
+  querydue.add_filter "status_id", "o"
+  querydue.add_filter "due_date", "<=", [(Date.today-1).strftime("%Y-%m-%d")]
+  querydue.column_names = ["project", "tracker", "status", "subject"]
+  querydue.sort_criteria = [["due_date", "desc"]]
+  issuesdue = querydue.issues()
+
+  querytoday = IssueQuery.new(:name => l("issues_today"), :user => User.current)
+  querytoday.add_filter "status_id", "o"
+  querytoday.add_filter "due_date", "t"
+  querytoday.column_names = ["project", "tracker", "status", "subject"]
+  querytoday.sort_criteria = [["due_date", "desc"]]
+  issuestoday = querytoday.issues()
+
+  render :partial => "my/my_block_issues_summary", :locals => {:querydue => querydue, :issuesdue => issuesdue, :querytoday => querytoday, :issuestoday => issuestoday, :querynext => querynext, :issuesnext => issuesnext}
+%>

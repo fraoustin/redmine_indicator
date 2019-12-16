@@ -1,0 +1,7 @@
+<%=
+    if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
+        if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'summary' }
+            render :partial => "projects/blocks/issues_summary", :locals => {}
+        end
+    end
+%>

@@ -33,10 +33,5 @@
   querytoday.sort_criteria = settings[:sort].presence || [["due_date", "desc"]]
   issuestoday = querytoday.issues()
 
-
-
-
-
-
-  render :partial => "my/my_block_issues_synthese", :locals => {:querydue => querydue, :issuesdue => issuesdue, :querytoday => querytoday, :issuestoday => issuestoday, :querynext => querynext, :issuesnext => issuesnext, :block => block}
+  render :partial => "my/my_block_issues_summary", :locals => {:querydue => querydue, :issuesdue => issuesdue, :querytoday => querytoday, :issuestoday => issuestoday, :querynext => querynext, :issuesnext => issuesnext}
 %>
