@@ -1,0 +1,18 @@
+<%=
+  queryopened = IssueQuery.new(:name => l("issues_opened"), :user => User.current)
+  queryopened.add_filter "status_id", "*"
+  queryopened.add_filter "created_on", "t"
+  queryopened.column_names = ["project", "tracker", "status", "subject"]
+  queryopened.sort_criteria = [["due_date", "desc"]]
+  issuesopened = queryopened.issues()
+
+  queryclosed = IssueQuery.new(:name => l("issues_closed"), :user => User.current)
+  queryclosed.add_filter "status_id", "c"
+  queryclosed.add_filter "closed_on", "t"
+  queryclosed.column_names = ["project", "tracker", "status", "subject"]
+  queryclosed.sort_criteria = [["due_date", "desc"]]
+  issuesclosed = queryclosed.issues()
+
+
+  render :partial => "my/my_block_issues_opened_closed", :locals => {:title => 'label_today', :queryopened => queryopened, :issuesopened => issuesopened, :queryclosed => queryclosed, :issuesclosed => issuesclosed}
+%>

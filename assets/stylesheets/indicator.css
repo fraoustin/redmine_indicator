@@ -1,10 +1,10 @@
-table.indicator.synthese {
+table.indicator.summary {
     width: 100%;
     text-align: center;
     table-layout: fixed;
 }
 
-table.indicator.synthese .circle {
+table.indicator.summary .circle {
     text-align:center;
     line-height:0;
     border-radius:50%;
@@ -16,8 +16,9 @@ table.indicator.synthese .circle {
     line-height: 60px;
 }
 
-table.indicator.synthese .circle h1 {
+table.indicator.summary .circle h1 {
     padding: 0px;
+    font-style: unset; 
 }
 
 .circle.due {
@@ -59,7 +60,7 @@ canvas.doughnut {
 
 @media screen and (max-width: 899px)
 {
-    table.indicator.synthese .circle {
+    table.indicator.summary .circle {
         width: 70px;
         height: 70px;
     }

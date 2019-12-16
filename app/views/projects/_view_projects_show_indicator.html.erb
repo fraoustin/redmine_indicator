@@ -5,3 +5,10 @@
         end
     end
 %>
+<%=
+    if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
+        if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'opened_closed_today' }
+            render :partial => "projects/blocks/issues_opened_closed_today", :locals => {}
+        end
+    end
+%>

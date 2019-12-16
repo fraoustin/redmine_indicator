@@ -1,4 +1,5 @@
-<table class="indicator synthese">
+<h3><%= l(title) %></h3>
+<table class="indicator summary">
   <tr>
     <td><div class="circle <%= issuesopened.length > 0 ? 'due' : 'nothing' %>"><h1><%= link_to issuesopened.length, _project_issues_path(queryopened.project, queryopened.as_params) %></h1></div></td>
     <td><div class="circle <%= issuesclosed.length > 0 ? 'today' : 'nothing' %>"><h1><%= link_to issuesclosed.length, _project_issues_path(queryclosed.project, queryclosed.as_params) %></h1></div></td>

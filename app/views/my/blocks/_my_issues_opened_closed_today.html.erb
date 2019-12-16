@@ -18,5 +18,5 @@
   issuesclosed = queryclosed.issues()
 
 
-  render :partial => "my/my_block_issues_opened_closed", :locals => {:queryopened => queryopened, :issuesopened => issuesopened, :queryclosed => queryclosed, :issuesclosed => issuesclosed, :block => block}
+  render :partial => "my/my_block_issues_opened_closed", :locals => {:title => 'label_today', :queryopened => queryopened, :issuesopened => issuesopened, :queryclosed => queryclosed, :issuesclosed => issuesclosed, :block => block}
 %>
