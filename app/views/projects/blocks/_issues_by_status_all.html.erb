@@ -1,0 +1,24 @@
+<%=
+
+  query = IssueQuery.new(:name => l("label_issue_status_plural"), :user => User.current)
+  query.add_filter "project_id", "=", [project.id]
+  query.add_filter "status_id", "*"
+  query.column_names = ["status", "project", "tracker", "priority", "subject"]
+  query.sort_criteria = [["status", "due_date", "desc"]]
+  query.group_by = ["status"]
+  issues = query.issues()
+
+  statuss = {}
+  issues.each do |issue|
+    statuss[issue.status.name] = (statuss[issue.status.name] || []).push(issue)
+  end
+
+  label = []
+  data = []
+  statuss.keys.each do |status|
+    label.push(status)
+    data.push(statuss[status].length)
+  end
+
+  render :partial => "my/my_block_doughnut", :locals => {:id => 'bystatusall', :query => query, :labels => label, :datas => data}
+%>

@@ -19,5 +19,52 @@
         end
     end
 %>
+<%=
+    if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
+        if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'by_priority' }
+            render :partial => "projects/blocks/issues_by_priority", :locals => {:project => project}
+        end
+    end
+%>
+<%=
+    if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
+        if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'by_priority_all' }
+            render :partial => "projects/blocks/issues_by_priority_all", :locals => {:project => project}
+        end
+    end
+%>
+<%=
+    if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
+        if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'by_status' }
+            render :partial => "projects/blocks/issues_by_status", :locals => {:project => project}
+        end
+    end
+%>
+<%=
+    if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
+        if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'by_status_all' }
+            render :partial => "projects/blocks/issues_by_status_all", :locals => {:project => project}
+        end
+    end
+%>
+<%=
+    if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
+        if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'by_tracker' }
+            render :partial => "projects/blocks/issues_by_tracker", :locals => {:project => project}
+        end
+    end
+%>
+<%=
+    if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }
+        if project.custom_field_values.find{ |f| f.custom_field.name == indicatorName }.value.find{ |f| f == 'by_tracker_all' }
+            render :partial => "projects/blocks/issues_by_tracker_all", :locals => {:project => project}
+        end
+    end
+%>
+
+
+
+
+
 
 

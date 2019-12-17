@@ -1,11 +1,10 @@
 <%=
-  current_user_ids = [User.current.id] + User.current.group_ids
 
   query = IssueQuery.new(:name => l("label_issue_status_plural")+" ("+l("default_issue_status_in_progress")+")", :user => User.current)
-  query.add_filter "assigned_to_id", "=", current_user_ids
+  query.add_filter "project_id", "=", [project.id]
   query.add_filter "status_id", "o"
-  query.column_names = settings[:columns].presence || ["status", "project", "tracker", "priority", "subject"]
-  query.sort_criteria = settings[:sort].presence || [["status", "due_date", "desc"]]
+  query.column_names = ["status", "project", "tracker", "priority", "subject"]
+  query.sort_criteria = [["status", "due_date", "desc"]]
   query.group_by = ["status"]
   issues = query.issues()
 
@@ -21,5 +20,5 @@
     data.push(statuss[status].length)
   end
 
-  render :partial => "my/my_block_doughnut", :locals => {:id => 'bystatus', :query => query, :block => block, :labels => label, :datas => data}
+  render :partial => "my/my_block_doughnut", :locals => {:id => 'bystatus', :query => query, :labels => label, :datas => data}
 %>

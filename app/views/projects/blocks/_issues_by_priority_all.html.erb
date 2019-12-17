@@ -1,0 +1,23 @@
+<%=
+  query = IssueQuery.new(:name => l("enumeration_issue_priorities"), :user => User.current)
+  query.add_filter "project_id", "=", [project.id]
+  query.add_filter "status_id", "*"
+  query.column_names = ["priority", "project", "tracker", "status", "subject"]
+  query.sort_criteria = [["priority", "due_date", "desc"]]
+  query.group_by = ["priority"]
+  issues = query.issues()
+
+  prioritys = {}
+  issues.each do |issue|
+    prioritys[issue.priority.name] = (prioritys[issue.priority.name] || []).push(issue)
+  end
+
+  label = []
+  data = []
+  prioritys.keys.each do |priority|
+    label.push(priority)
+    data.push(prioritys[priority].length)
+  end
+
+  render :partial => "my/my_block_doughnut", :locals => {:id => 'bypriorityall', :query => query, :labels => label, :datas => data}
+%>

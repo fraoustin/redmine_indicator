@@ -1,7 +1,7 @@
 <%=
   current_user_ids = [User.current.id] + User.current.group_ids
 
-  query = IssueQuery.new(:name => l("my_issues_by_tracker"), :user => User.current)
+  query = IssueQuery.new(:name => l("label_tracker_all")+" ("+l("default_issue_status_in_progress")+")", :user => User.current)
   query.add_filter "assigned_to_id", "=", current_user_ids
   query.add_filter "status_id", "o"
   query.column_names = settings[:columns].presence || ["tracker", "project", "status", "priority", "subject"]
