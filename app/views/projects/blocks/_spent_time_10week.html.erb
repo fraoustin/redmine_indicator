@@ -1,0 +1,30 @@
+<%=
+  query = TimeEntryQuery.new(:name => l("label_spent_time"), :user => User.current)
+  query.add_filter "project_id", "=", [project.id]
+  query.add_filter "spent_on", ">=" , [(Date.today-70).strftime("%Y-%m-%d")]
+  query.column_names = ["spent_on", "hours"]
+  issues = query.results_scope()
+
+
+  titles = ['time']
+  label = {}
+  data = []
+  dtes = {}
+
+
+  (-70..0).each do |i|
+    label["Week " + (Date.today+i).strftime("%W")]=""
+    dtes[(Date.today+i).strftime("%W")]=0
+  end
+  label = label.keys
+
+  issues.each do |issue|
+    dtes[issue.spent_on.strftime("%W")] = (dtes[issue.spent_on.strftime("%W")] || 0) + issue.hours
+  end
+
+  dtes.keys.each do |dte|
+    data.push(dtes[dte])
+  end
+
+  render :partial => "my/my_block_changes", :locals => {:id => 'a10w', :titles => titles,  :labels => label, :datas => [data], :query => query}
+%>

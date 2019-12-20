@@ -1,5 +1,5 @@
 <h3><%= link_to query.name, _project_issues_path(query.project, query.as_params) %></h3>
-<canvas id="<%= id %>" class="doughnut"></canvas>
+<canvas id="<%= id %>" class="line"></canvas>
 <script src="/plugin_assets/redmine_indicator/javascripts/Chart.min.js"></script>
 <script>
 window.chartColors = {
@@ -26,29 +26,45 @@ window.chartColors = {
 var colorNames = Object.keys(window.chartColors);
 var ctx = document.getElementById('<%= id %>').getContext('2d');
 config = {
-    datasets: [{
-        data: [],
-        backgroundColor: []
-    }],
+    datasets: [],
     labels: []
 };
 options = {
     responsive: true,
 	legend: {
 		position: 'right',
-	},
+    },
+    scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true,
+            }
+        }]
+    }
 };
 var labels = <%=  raw labels %>
 var datas = <%= datas %>
-for (var index = 0; index < labels.length; ++index) {
-    config.datasets[0].data.push(datas[index]);
-    config.labels.push(labels[index])
-    var colorName = colorNames[index % colorNames.length];
+var titles = <%= raw titles %>
+for (var indexd = 0; indexd < datas.length; ++indexd) {
+    data = datas[indexd]
+    var colorName = colorNames[indexd % colorNames.length];
     var newColor = window.chartColors[colorName];
-    config.datasets[0].backgroundColor.push(newColor);
+    config.datasets.push({
+        data: [],
+        backgroundColor: newColor,
+        borderColor: newColor,
+        fill: false
+    })
+    for (var index = 0; index < labels.length; ++index) {
+        config.datasets[indexd].data.push(data[index]);
+        config.datasets[indexd].label = titles[indexd]
+    }
 }
-var myDoughnutChart = new Chart(ctx, {
-    type: 'doughnut',
+for (var index = 0; index < labels.length; ++index) {
+    config.labels.push(labels[index])
+}
+var lineChart = new Chart(ctx, {
+    type: 'line',
     data: config,
     options: options
 });

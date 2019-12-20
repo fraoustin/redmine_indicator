@@ -1,0 +1,29 @@
+<%=
+  
+  query = TimeEntryQuery.new(:name => l("label_spent_time"), :user => User.current)
+  query.add_filter "project_id", "=", [project.id]
+  query.add_filter "spent_on", ">=" , [(Date.today-10).strftime("%Y-%m-%d")]
+  query.column_names = ["spent_on", "hours"]
+  issues = query.results_scope()
+
+
+  titles = ['time']
+  label = []
+  data = []
+  dtes = {}
+
+  (-10..0).each do |i|
+    label.push((Date.today+i).strftime("%a, %d %b %Y"))
+    dtes[(Date.today+i).strftime("%a, %d %b %Y")]=0
+  end
+
+  issues.each do |issue|
+    dtes[issue.spent_on.strftime("%a, %d %b %Y")] = (dtes[issue.spent_on.strftime("%a, %d %b %Y")] || 0) + issue.hours
+  end
+
+  dtes.keys.each do |dte|
+    data.push(dtes[dte])
+  end
+
+  render :partial => "my/my_block_changes", :locals => {:id => 'a10d', :titles => titles,  :labels => label, :datas => [data], :query => query}
+%>

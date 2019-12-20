@@ -56,7 +56,15 @@ table.indicator.summary .circle h1 {
 canvas.doughnut {
     max-width: 400px;
     max-height: 400px;
+    margin: auto;
 }
+
+canvas.line {
+    max-height: 300px;
+    max-width: 600px;
+    margin: auto;
+}
+
 
 @media screen and (max-width: 899px)
 {

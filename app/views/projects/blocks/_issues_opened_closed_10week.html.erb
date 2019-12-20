@@ -1,0 +1,48 @@
+<%=
+
+  queryopened = IssueQuery.new(:name => l("label_open_issues")+'/'+l("label_closed_issues"), :user => User.current)
+  queryopened.add_filter "project_id", "=", [project.id] 
+  queryopened.add_filter "status_id", "*"
+  queryopened.add_filter "created_on", ">=" , [(Date.today-70).strftime("%Y-%m-%d")]
+  queryopened.column_names = ["project", "tracker", "status", "subject"]
+  queryopened.sort_criteria = [["due_date", "desc"]]
+  issuesopened = queryopened.issues()
+
+  queryclosed = IssueQuery.new(:name => l("issues_closed"), :user => User.current)
+  queryclosed.add_filter "project_id", "=", [project.id]   
+  queryclosed.add_filter "status_id", "c"
+  queryclosed.add_filter "closed_on", ">=" , [(Date.today-70).strftime("%Y-%m-%d")]
+  queryclosed.column_names = ["project", "tracker", "status", "subject"]
+  queryclosed.sort_criteria = [["due_date", "desc"]]
+  issuesclosed = queryclosed.issues()
+
+  titles = ['opened','closed']
+  label = {}
+  dataopened = []
+  dataclosed = []
+  dtesopened = {}
+  dtesclosed = {}
+
+  (-70..0).each do |i|
+    label["Week " + (Date.today+i).strftime("%W")]=""
+    dtesopened[(Date.today+i).strftime("%W")]=[]
+    dtesclosed[(Date.today+i).strftime("%W")]=[]
+  end
+  label = label.keys
+
+  issuesopened.each do |issue|
+    dtesopened[issue.created_on.strftime("%W")] = (dtesopened[issue.created_on.strftime("%W")] || []).push(issue)
+  end
+  issuesclosed.each do |issue|
+    dtesclosed[issue.created_on.strftime("%W")] = (dtesclosed[issue.created_on.strftime("%W")] || []).push(issue)
+  end
+
+  dtesopened.keys.each do |dte|
+    dataopened.push(dtesopened[dte].length)
+  end
+  dtesclosed.keys.each do |dte|
+    dataclosed.push(dtesclosed[dte].length)
+  end
+
+  render :partial => "my/my_block_changes", :locals => {:id => '10w', :titles => titles,  :labels => label, :datas => [dataopened, dataclosed], :query => queryopened}
+%>

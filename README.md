@@ -38,10 +38,24 @@ On your page, can you add
 
 ![custom-field](screenshots/8.png "My page")
 
+- my issues opened closed on 10 days
+
+![custom-field](screenshots/10.png "My page")
+
+- - my issues opened closed on 10 weeks
+
 - my issues summary
 
 ![custom-field](screenshots/9.png "My page")
 
+
+- my spent time on 10 days
+
+![custom-field](screenshots/11.png "My page")
+
+- my spent_time on 10 weeks
+
+![custom-field](screenshots/12.png "My page")
 
 ## Installation
 
