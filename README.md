@@ -57,11 +57,33 @@ On your page, can you add
 
 ![custom-field](screenshots/12.png "My page")
 
+
+You can add same block in project's page "overview" with change value of custom field of projet:
+
+- indicator_left_top
+- indicator_left_bottom
+- indicator_right
+
+![custom-field](screenshots/13.png "Project")
+
+![custom-field](screenshots/14.png "Project")
+
+
+
 ## Installation
 
 ```
 $ cd redmine/plugins
 $ git clone https://github.com/fraoustin/redmine_indicator.git
+$ rake redmine:plugins:migrate NAME=redmine_indicator
 ```
 
 restart Redmine
+
+for uninstall, you can use
+
+```
+$ cd redmine/plugins
+$ rake redmine:plugins:migrate NAME=redmine_indicator VERSION=0
+```
+
