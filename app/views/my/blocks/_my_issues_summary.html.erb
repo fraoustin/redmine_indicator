@@ -4,7 +4,7 @@
   querynext = IssueQuery.new(:name => l("issues_next"), :user => User.current)
   querynext.add_filter "assigned_to_id", "=", current_user_ids
   querynext.add_filter "status_id", "o"
-  querynext.add_filter "due_date", "><", [(Date.today+1).strftime("%Y-%m-%d"), (Date.today+7).strftime("%Y-%m-%d")]
+  querynext.add_filter "due_date", ">=", [(Date.today+1).strftime("%Y-%m-%d")]
   querynext.column_names = settings[:columns].presence || ["project", "tracker", "status", "subject"]
   querynext.sort_criteria = settings[:sort].presence || [["due_date", "desc"]]
   issuesnext = querynext.issues()
