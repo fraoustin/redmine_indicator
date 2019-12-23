@@ -6,7 +6,7 @@
   query.add_filter "status_id", "o"
   query.add_filter "due_date", "<=", [(Date.today-1).strftime("%Y-%m-%d")]
   query.column_names = settings[:columns].presence || ["project", "tracker", "status", "subject"]
-  query.sort_criteria = settings[:sort].presence || [["due_date", "desc"]]
+  query.sort_criteria = settings[:sort].presence || [["due_date", "asc"]]
   issues = query.issues()
 
   render :partial => "my/my_block_issues", :locals => {:query => query, :issues => issues, :block => block}
