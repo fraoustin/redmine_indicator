@@ -65,6 +65,14 @@ canvas.line {
     margin: auto;
 }
 
+a.myprojects {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+div.list-projects a.new-issue {
+    float: right;
+}
 
 @media screen and (max-width: 899px)
 {

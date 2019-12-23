@@ -1,0 +1,8 @@
+<h3><%= l("label_my_projects") %></h3>
+<% User.current.visible_project_ids.each do |ids|
+  project = Project.where(:id => ids)[0] %>
+ <div class="list-projects">
+ <%= link_to(project.name, project_path(project), :class => "myprojects").html_safe %>
+ <%= link_to l("label_issue_new"), _new_project_issue_path(project), :class => 'icon icon-add new-issue' %>
+ </div>
+<% end %>
