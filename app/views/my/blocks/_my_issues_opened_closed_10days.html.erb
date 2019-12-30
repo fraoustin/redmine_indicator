@@ -34,7 +34,7 @@
     dtesopened[issue.created_on.strftime("%a, %d %b %Y")] = (dtesopened[issue.created_on.strftime("%a, %d %b %Y")] || []).push(issue)
   end
   issuesclosed.each do |issue|
-    dtesclosed[issue.created_on.strftime("%a, %d %b %Y")] = (dtesclosed[issue.created_on.strftime("%a, %d %b %Y")] || []).push(issue)
+    dtesclosed[issue.closed_on.strftime("%a, %d %b %Y")] = (dtesclosed[issue.closed_on.strftime("%a, %d %b %Y")] || []).push(issue)
   end
 
   dtesopened.keys.each do |dte|

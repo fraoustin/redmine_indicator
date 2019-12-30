@@ -35,7 +35,7 @@
     dtesopened[issue.created_on.strftime("%W")] = (dtesopened[issue.created_on.strftime("%W")] || []).push(issue)
   end
   issuesclosed.each do |issue|
-    dtesclosed[issue.created_on.strftime("%W")] = (dtesclosed[issue.created_on.strftime("%W")] || []).push(issue)
+    dtesclosed[issue.closed_on.strftime("%W")] = (dtesclosed[issue.closed_on.strftime("%W")] || []).push(issue)
   end
 
   dtesopened.keys.each do |dte|
