@@ -1,4 +1,4 @@
-class IndicatorCustomFields < ActiveRecord::Migration[4.2]
+class IndicatorCustomFields < ActiveRecord::Migration
     # method called when installing the plugin
     def self.up
       if ProjectCustomField.find_by_name('indicator_left_top').nil?
