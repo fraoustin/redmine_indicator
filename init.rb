@@ -32,7 +32,7 @@ Redmine::Plugin.register :redmine_indicator do
   name 'Redmine Indicator'
   author 'Frederic Aoustin'
   description 'The redmine_indicator add block with main indicator on my page and project page'
-  version '0.2.6'
+  version '0.2.7'
   url 'https://github.com/fraoustin/redmine_indicator'
   author_url 'https://github.com/fraoustin'
   requires_redmine :version_or_higher => '2.3.0'
