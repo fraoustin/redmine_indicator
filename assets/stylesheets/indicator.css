@@ -72,6 +72,7 @@ a.myprojects {
 
 div.list-projects a.new-issue, div.list-projects a.new-time {
     float: right;
+    padding-right: 20px;
 }
 
 @media screen and (max-width: 899px)
