@@ -70,7 +70,7 @@ a.myprojects {
     font-size: 16px;
 }
 
-div.list-projects a.new-issue {
+div.list-projects a.new-issue, div.list-projects a.new-time {
     float: right;
 }
 
@@ -79,5 +79,9 @@ div.list-projects a.new-issue {
     table.indicator.summary .circle {
         width: 70px;
         height: 70px;
+    }
+    
+    div.list-projects a.new-issue, div.list-projects a.new-time {
+        text-indent: -9999px;
     }
 }

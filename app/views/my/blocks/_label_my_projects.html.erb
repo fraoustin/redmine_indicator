@@ -3,6 +3,11 @@
   project = Project.where(:id => ids)[0] %>
  <div class="list-projects">
  <%= link_to(project.name, project_path(project), :class => "myprojects").html_safe %>
- <%= link_to l("label_issue_new"), _new_project_issue_path(project), :class => 'icon icon-add new-issue' %>
+ <%= link_to l("label_issue_new"), 
+            _new_project_issue_path(project), 
+            :class => 'icon icon-add new-issue' %>
+ <%= link_to l(:button_log_time),
+            new_project_time_entry_path(project),
+            :class => 'icon icon-time-add new-time' if User.current.allowed_to?(:log_time, project, :global => true) %>
  </div>
 <% end %>
