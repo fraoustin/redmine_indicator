@@ -10,8 +10,7 @@
             new_project_time_entry_path(project),
             :class => 'icon icon-time-add new-time' if User.current.allowed_to?(:log_time, project, :global => true) %>
  <%= link_to l("project_module_wiki"),
-            project_wiki_index_path(project),
+            project_wiki_page_path(project, 'wiki'),
             :class => 'icon icon-edit new-wiki' if User.current.allowed_to?(:view_wiki_pages, project, :global => true) %>
- 
  </div>
 <% end %>
