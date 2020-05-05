@@ -1,0 +1,12 @@
+ru:
+  my_issues_due: "Мои просроченные задачи"
+  my_issues_today : "Мои задачи на сегодня"
+  my_issues_next : "Мои следующие задачи"
+  issues_due: "Просроченные задачи"
+  issues_today : "Задачи на сегодня"
+  issues_next : "Следующие задачи"
+  my_issues_opened_closed_today : " Мои открытые и закрытые задачи за сегодня"
+  my_issues_summary : "Сводка по моим задачам"
+  my_issues_by_priority : "Мои задачи по приоритету"
+  my_issues_by_status : "Мои задачи по статусу"
+  my_issues_by_tracker : "Мои задачи по трекеру"
