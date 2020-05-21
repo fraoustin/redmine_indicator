@@ -1,10 +1,10 @@
 <div id="leftIndicatorTop">
 <%=
-    render :partial => "projects/view_projects_show_indicator", :locals => {:project => project, :indicatorName => 'indicator_left_top'}
+    render :partial => "projects/view_projects_show_indicator", :locals => {:project => project, :indicatorValue => project.indicator_left_top}
 %>
 </div>
 <div id="leftIndicatorBottom">
 <%=
-    render :partial => "projects/view_projects_show_indicator", :locals => {:project => project, :indicatorName => 'indicator_left_bottom'}
+    render :partial => "projects/view_projects_show_indicator", :locals => {:project => project, :indicatorValue => project.indicator_left_bottom}
 %>
 </div>
