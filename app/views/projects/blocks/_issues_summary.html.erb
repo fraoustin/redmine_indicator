@@ -31,5 +31,6 @@
   querytoday.sort_criteria = [["due_date", "desc"]]
   issuestoday = querytoday.issues()
 
-  render :partial => "my/my_block_issues_summary", :locals => {:title => 'default_issue_status_in_progress', :querydue => querydue, :issuesdue => issuesdue, :querytoday => querytoday, :issuestoday => issuestoday, :querynext => querynext, :issuesnext => issuesnext}
+  locals = {:title => 'default_issue_status_in_progress', :querydue => querydue, :issuesdue => issuesdue, :querytoday => querytoday, :issuestoday => issuestoday, :querynext => querynext, :issuesnext => issuesnext}
+  render :partial => "my/my_block_issues_summary", :locals => locals
 %>
