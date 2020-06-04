@@ -1,5 +1,5 @@
 <% if !indicatorValue.nil?
    indicatorValue.each do |v| %>
     <%= render :partial => "projects/blocks/#{v}", :locals => {:project => project} unless v.blank? %>
-  <% end
-end %>
+   <% end %>
+<% end %>
