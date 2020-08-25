@@ -10,6 +10,20 @@ en:
   my_issues_by_priority : "My issues by priority"
   my_issues_by_status : "My issues by status"
   my_issues_by_tracker : "My issues by tracker"
-  
- 
-  
+  field_indicator_left_top: "Indicator: left top"
+  field_indicator_left_bottom: "Indicator: left bottom"
+  field_indicator_right: "Indicator:Right"
+  indicator_report_issues_summary: "Summary"
+  indicator_report_issues_opened_closed_today: "Opened/Closed Today"
+  indicator_report_issues_opened_closed: "Opened/Closed"
+  indicator_report_issues_opened_closed_10days: "Opened/Closed 10 days"
+  indicator_report_issues_opened_closed_10weeks: "Opened/Closed 10 weeks"
+  indicator_report_issues_by_priority: "By priority"
+  indicator_report_issues_by_priority_all: "By priority all"
+  indicator_report_issues_by_status: "By status"
+  indicator_report_issues_by_status_all: "By status all"
+  indicator_report_issues_by_tracker: "By tracker"
+  indicator_report_issues_by_tracker_all: "By tracker all"
+  indicator_report_spent_time_10days: "Spent Time 10 days"
+  indicator_report_spent_time_10weeks: "Spent Time 10 weeks"
+

@@ -21,14 +21,13 @@ class IndicatorCustomFields < Rails.version < '5.0' ? ActiveRecord::Migration : 
                                        :visible => false, 
                                        :possible_values => 
                                        ['summary','opened_closed_today','opened_closed','opened_closed_10days','opened_closed_10weeks','spent_time_10days','spent_time_10weeks','by_priority','by_priority_all','by_status','by_status_all','by_tracker','by_tracker_all'])
-      
       end
     end
-  
+
     # method called when installing the plugin
     def self.down
       ProjectCustomField.find_by_name('indicator_left_top').delete unless ProjectCustomField.find_by_name('indicator_left_top').nil?
-      ProjectCustomField.find_by_name('indicator_left_bottom').delete unless ProjectCustomField.find_by_name('indicator_left_top').nil?
-      ProjectCustomField.find_by_name('indicator_left_right').delete unless ProjectCustomField.find_by_name('indicator_left_top').nil?
+      ProjectCustomField.find_by_name('indicator_left_bottom').delete unless ProjectCustomField.find_by_name('indicator_left_bottom').nil?
+      ProjectCustomField.find_by_name('indicator_left_right').delete unless ProjectCustomField.find_by_name('indicator_right').nil?
     end
 end
