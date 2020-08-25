@@ -13,7 +13,7 @@ class IndicatorProjectSttingsAdd < ActiveRecord::Migration[4.2]
   def self.down
     remove_column :projects, :indicator_left_top, :text
     remove_column :projects, :indicator_left_bottom, :text
-    remov_column :projects, :indicator_right, :text
+    remove_column :projects, :indicator_right, :text
     if ProjectCustomField.find_by_name('indicator_left_top').nil?
       fieldLeftTop = ProjectCustomField.create!(:name => 'indicator_left_top', :field_format => 'list',
                                    :multiple => 'true',
