@@ -1,5 +1,5 @@
 require 'redmine'
-require 'redmine_indicator/project_patch'
+require File.dirname(__FILE__) + '/redmine_indicator/project_patch'
 
 module RedmineIndicator
   def self.apply_patch

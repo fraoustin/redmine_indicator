@@ -32,6 +32,11 @@ Rails.application.config.to_prepare do
   RedmineIndicator.apply_patch
 end
 
+# for redmine 5
+Rails.application.config.after_initialize do
+  RedmineIndicator.apply_patch
+end
+
 Redmine::Plugin.register :redmine_indicator do
   name 'Redmine Indicator'
   author 'Frederic Aoustin'
