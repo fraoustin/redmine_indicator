@@ -1,6 +1,8 @@
 <h3><%= l("label_my_projects") %></h3>
 <% User.current.visible_project_ids.each do |ids|
-  project = Project.where(:id => ids)[0] %>
+  project = Project.where(:id => ids, :status => 1).first
+  next unless project
+%>
  <div class="list-projects">
  <%= link_to(project.name, project_path(project), :class => "myprojects").html_safe %>
  <%= link_to l("label_issue_new"), 
