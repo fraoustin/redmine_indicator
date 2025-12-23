@@ -11,7 +11,7 @@ module RedmineIndicator
       include Redmine::I18n
       render_on(:view_projects_show_right, :partial => 'projects/view_projects_show_right_indicator', :layout => false)
     end
-    class ViewProjectsShowRightHook < Redmine::Hook::ViewListener
+    class ViewProjectsShowLeftHook < Redmine::Hook::ViewListener
       include Redmine::I18n
       render_on(:view_projects_show_left, :partial => 'projects/view_projects_show_left_indicator', :layout => false)
     end
