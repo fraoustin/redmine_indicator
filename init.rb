@@ -14,7 +14,13 @@ def init_repeat
   end
 end
 
-if Rails::VERSION::MAJOR >= 5
+if Rails::VERSION::MAJOR >= 6
+  # Dynamically load all Hooks & Patches
+  Dir::foreach(File.join(File.dirname(__FILE__), 'lib')) do |file|
+    next unless file.end_with?('.rb')
+    require_relative "lib/#{file.delete_suffix(".rb") }"
+  end
+elsif Rails::VERSION::MAJOR >= 5
   ActiveSupport::Reloader.to_prepare do
     init_repeat
   end
