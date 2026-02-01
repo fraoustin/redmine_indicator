@@ -28,6 +28,6 @@ class IndicatorCustomFields < Rails.version < '5.0' ? ActiveRecord::Migration : 
     def self.down
       ProjectCustomField.find_by_name('indicator_left_top').delete unless ProjectCustomField.find_by_name('indicator_left_top').nil?
       ProjectCustomField.find_by_name('indicator_left_bottom').delete unless ProjectCustomField.find_by_name('indicator_left_bottom').nil?
-      ProjectCustomField.find_by_name('indicator_left_right').delete unless ProjectCustomField.find_by_name('indicator_right').nil?
+      ProjectCustomField.find_by_name('indicator_right').delete unless ProjectCustomField.find_by_name('indicator_right').nil?
     end
 end
